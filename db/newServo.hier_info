@@ -1,0 +1,166 @@
+|KK
+SAL <= PWM:inst4.PWM
+CLK => PWM:inst4.clk
+CLK => CLOCK_DIV_50:inst3.CLOCK_50MHz
+RS => contador_3seg:inst6.reset
+RS => contador24seg:inst.areset
+alta <= comparador:inst7.alta
+baja <= comparador:inst7.baja
+normal <= comparador:inst7.normal
+
+
+|KK|PWM:inst4
+clk => PWM_Count[0].CLK
+clk => PWM_Count[1].CLK
+clk => PWM_Count[2].CLK
+clk => PWM_Count[3].CLK
+clk => PWM_Count[4].CLK
+clk => PWM_Count[5].CLK
+clk => PWM_Count[6].CLK
+clk => PWM_Count[7].CLK
+clk => PWM_Count[8].CLK
+clk => PWM_Count[9].CLK
+clk => PWM_Count[10].CLK
+clk => PWM_Count[11].CLK
+clk => PWM_Count[12].CLK
+clk => PWM_Count[13].CLK
+clk => PWM_Count[14].CLK
+clk => PWM_Count[15].CLK
+clk => PWM_Count[16].CLK
+clk => PWM_Count[17].CLK
+clk => PWM_Count[18].CLK
+selector[0] => Mux0.IN19
+selector[0] => Mux1.IN19
+selector[1] => Mux0.IN18
+selector[1] => Mux1.IN18
+selector[2] => Mux0.IN17
+selector[2] => Mux1.IN17
+selector[3] => Mux0.IN16
+selector[3] => Mux1.IN16
+PWM <= PWM$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|KK|contador_3seg:inst6
+clock => RETORNO.CLK
+clock => Q[0]~reg0.CLK
+clock => Q[1]~reg0.CLK
+clock => Q[2]~reg0.CLK
+clock => Q[3]~reg0.CLK
+enable => RETORNO.ENA
+enable => Q[3]~reg0.ENA
+enable => Q[2]~reg0.ENA
+enable => Q[1]~reg0.ENA
+enable => Q[0]~reg0.ENA
+reset => RETORNO.ACLR
+reset => Q[0]~reg0.ACLR
+reset => Q[1]~reg0.ACLR
+reset => Q[2]~reg0.ACLR
+reset => Q[3]~reg0.ACLR
+tres_seg <= <GND>
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|KK|CLOCK_DIV_50:inst3
+CLOCK_50MHz => CLOCK_1Hz~reg0.CLK
+CLOCK_50MHz => CLOCK_10Hz~reg0.CLK
+CLOCK_50MHz => CLOCK_100Hz~reg0.CLK
+CLOCK_50MHz => CLOCK_1KHz~reg0.CLK
+CLOCK_50MHz => CLOCK_10KHz~reg0.CLK
+CLOCK_50MHz => CLOCK_100KHz~reg0.CLK
+CLOCK_50MHz => CLOCK_1MHz~reg0.CLK
+CLOCK_50MHz => clock_1Mhz_int.CLK
+CLOCK_50MHz => count_1Mhz[0].CLK
+CLOCK_50MHz => count_1Mhz[1].CLK
+CLOCK_50MHz => count_1Mhz[2].CLK
+CLOCK_50MHz => count_1Mhz[3].CLK
+CLOCK_50MHz => count_1Mhz[4].CLK
+CLOCK_50MHz => count_1Mhz[5].CLK
+CLOCK_1MHz <= CLOCK_1MHz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CLOCK_100KHz <= CLOCK_100KHz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CLOCK_10KHz <= CLOCK_10KHz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CLOCK_1KHz <= CLOCK_1KHz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CLOCK_100Hz <= CLOCK_100Hz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CLOCK_10Hz <= CLOCK_10Hz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CLOCK_1Hz <= CLOCK_1Hz~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|KK|comparador:inst7
+A[0] => LessThan0.IN10
+A[0] => LessThan1.IN10
+A[0] => Equal0.IN2
+A[0] => Equal1.IN4
+A[0] => Equal2.IN2
+A[0] => Equal3.IN4
+A[0] => Equal4.IN3
+A[0] => Equal5.IN4
+A[0] => Equal6.IN4
+A[0] => Equal7.IN3
+A[1] => LessThan0.IN9
+A[1] => LessThan1.IN9
+A[1] => Equal0.IN4
+A[1] => Equal1.IN3
+A[1] => Equal2.IN4
+A[1] => Equal3.IN2
+A[1] => Equal4.IN2
+A[1] => Equal5.IN2
+A[1] => Equal6.IN3
+A[1] => Equal7.IN2
+A[2] => LessThan0.IN8
+A[2] => LessThan1.IN8
+A[2] => Equal0.IN3
+A[2] => Equal1.IN2
+A[2] => Equal2.IN1
+A[2] => Equal3.IN1
+A[2] => Equal4.IN1
+A[2] => Equal5.IN1
+A[2] => Equal6.IN2
+A[2] => Equal7.IN1
+A[3] => LessThan0.IN7
+A[3] => LessThan1.IN7
+A[3] => Equal0.IN1
+A[3] => Equal1.IN1
+A[3] => Equal2.IN0
+A[3] => Equal3.IN0
+A[3] => Equal4.IN4
+A[3] => Equal5.IN3
+A[3] => Equal6.IN1
+A[3] => Equal7.IN0
+A[4] => LessThan0.IN6
+A[4] => LessThan1.IN6
+A[4] => Equal0.IN0
+A[4] => Equal1.IN0
+A[4] => Equal2.IN3
+A[4] => Equal3.IN3
+A[4] => Equal4.IN0
+A[4] => Equal5.IN0
+A[4] => Equal6.IN0
+A[4] => Equal7.IN4
+alta <= alta.DB_MAX_OUTPUT_PORT_TYPE
+baja <= baja.DB_MAX_OUTPUT_PORT_TYPE
+normal <= normal.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|KK|contador24seg:inst
+clk => cnt_tmp[0].CLK
+clk => cnt_tmp[1].CLK
+clk => cnt_tmp[2].CLK
+clk => cnt_tmp[3].CLK
+clk => cnt_tmp[4].CLK
+start => proceso_contador.IN0
+areset => proceso_contador.IN1
+aload => cnt_tmp[4].IN1
+data[0] => cnt_tmp[0].ADATA
+data[1] => cnt_tmp[1].ADATA
+data[2] => cnt_tmp[2].ADATA
+data[3] => cnt_tmp[3].ADATA
+data[4] => cnt_tmp[4].ADATA
+cnt_out[0] <= cnt_tmp[0].DB_MAX_OUTPUT_PORT_TYPE
+cnt_out[1] <= cnt_tmp[1].DB_MAX_OUTPUT_PORT_TYPE
+cnt_out[2] <= cnt_tmp[2].DB_MAX_OUTPUT_PORT_TYPE
+cnt_out[3] <= cnt_tmp[3].DB_MAX_OUTPUT_PORT_TYPE
+cnt_out[4] <= cnt_tmp[4].DB_MAX_OUTPUT_PORT_TYPE
+
+
